@@ -2,7 +2,6 @@
 namespace Cirykpopeye\GoogleBusinessClient\Controller;
 
 
-use Cirykpopeye\GoogleBusinessClient\Entity\Account;
 use Cirykpopeye\GoogleBusinessClient\Entity\Location;
 use Cirykpopeye\GoogleBusinessClient\Entity\LocationPeriod;
 use Cirykpopeye\GoogleBusinessClient\Entity\Review;
@@ -11,9 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Response;
 
 class ConnectionController extends Controller
 {
@@ -152,6 +149,14 @@ class ConnectionController extends Controller
 
             $locationResponse = $this->connection->getLocation($location->getLocationId());
             $periods = $locationResponse->regularHours->periods;
+
+            if ($periods) {
+                //-- Remove all existing periods
+                foreach ($this->em->getRepository(LocationPeriod::class)->findBy(['location' => $location]) as $locationPeriod) {
+                    $this->em->remove($locationPeriod);
+                    $this->em->flush();
+                }
+            }
             foreach ($periods as $period) {
                 $periodEntity = new LocationPeriod();
                 $periodEntity->setCloseDay($period->closeDay);

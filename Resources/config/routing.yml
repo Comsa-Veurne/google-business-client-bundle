@@ -1,0 +1,11 @@
+callback_url:
+  path: /google-integration/callback
+  defaults: { _controller: GoogleBusinessClientBundle:Connection:callback }
+
+accounts_url:
+  path: /google-integration/accounts
+  defaults: { _controller: GoogleBusinessClientBundle:Connection:accounts }
+
+locations_url:
+  path: /google-integration/locations
+  defaults: { _controller: GoogleBusinessClientBundle:Connection:locations }

@@ -1,0 +1,11 @@
+services:
+  Cirykpopeye\GoogleBusinessClient\Manager\Connection:
+    class: Cirykpopeye\GoogleBusinessClient\Manager\Connection
+
+  Cirykpopeye\GoogleBusinessClient\Controller\ConnectionController:
+    class: Cirykpopeye\GoogleBusinessClient\Controller\ConnectionController
+    arguments:
+      - '@Cirykpopeye\GoogleBusinessClient\Manager\Connection'
+      - '@doctrine.orm.entity_manager'
+      - '@request_stack'
+

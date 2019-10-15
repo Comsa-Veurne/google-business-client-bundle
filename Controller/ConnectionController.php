@@ -154,20 +154,21 @@ class ConnectionController extends Controller
                 //-- Remove all existing periods
                 foreach ($this->em->getRepository(LocationPeriod::class)->findBy(['location' => $location]) as $locationPeriod) {
                     $this->em->remove($locationPeriod);
-                    $this->em->flush();
                 }
+                $this->em->flush();
             }
             foreach ($periods as $period) {
                 $periodEntity = new LocationPeriod();
                 $periodEntity->setCloseDay($period->closeDay);
 
-                $now = new \DateTime();
+                $openDateTime = new \DateTime();
+                $closeDateTime = new \DateTime();
                 $closeTime = explode(':', $period->closeTime);
                 $openTime = explode(':', $period->openTime);
 
-                $periodEntity->setCloseTime(($now->setTime($closeTime[0], $closeTime[1], 0, 0)));
+                $periodEntity->setCloseTime(($closeDateTime->setTime($closeTime[0], $closeTime[1], 0, 0)));
                 $periodEntity->setOpenDay($period->openDay);
-                $periodEntity->setOpenTime(($now->setTime($openTime[0], $openTime[1], 0, 0)));
+                $periodEntity->setOpenTime(($openDateTime->setTime($openTime[0], $openTime[1], 0, 0)));
                 $periodEntity->setLocation(
                     $location
                 );

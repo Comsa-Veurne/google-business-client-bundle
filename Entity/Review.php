@@ -8,6 +8,7 @@
 
 namespace Cirykpopeye\GoogleBusinessClient\Entity;
 
+use Cirykpopeye\GoogleBusinessClient\Model\LocationInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,7 +27,7 @@ class Review
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cirykpopeye\GoogleBusinessClient\Entity\Location", inversedBy="reviews")
+     * @ORM\ManyToOne(targetEntity="Cirykpopeye\GoogleBusinessClient\Model\LocationInterface", inversedBy="reviews")
      */
     private $location;
 
@@ -80,7 +81,7 @@ class Review
      * @param $createdOn
      * @param $updatedAt
      */
-    public function __construct($comment, $reviewId, $starRating, $reviewer, $profilePhoto, $createdOn, $updatedAt, Location $location, $locale)
+    public function __construct($comment, $reviewId, $starRating, $reviewer, $profilePhoto, $createdOn, $updatedAt, LocationInterface $location, $locale)
     {
         $this->comment = $comment;
         $this->reviewId = $reviewId;

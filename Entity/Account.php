@@ -26,7 +26,7 @@ class Account
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Cirykpopeye\GoogleBusinessClient\Entity\Location", mappedBy="account")
+     * @ORM\OneToMany(targetEntity="Cirykpopeye\GoogleBusinessClient\Model\LocationInterface", mappedBy="account")
      */
     private $locations;
 

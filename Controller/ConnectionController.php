@@ -6,6 +6,7 @@ use Cirykpopeye\GoogleBusinessClient\Entity\Location;
 use Cirykpopeye\GoogleBusinessClient\Entity\LocationPeriod;
 use Cirykpopeye\GoogleBusinessClient\Entity\Review;
 use Cirykpopeye\GoogleBusinessClient\Manager\Connection;
+use Cirykpopeye\GoogleBusinessClient\Model\LocationInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
@@ -109,7 +110,7 @@ class ConnectionController extends Controller
 
     public function callbackAction()
     {
-        $locations = $this->em->getRepository(Location::class)->findAll();
+        $locations = $this->em->getRepository(LocationInterface::class)->findAll();
         foreach ($locations as $location) {
             $reviews = $this->connection->getReviews($location->getLocationId());
             foreach ($reviews as $review) {

@@ -1,23 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cirykpopeye
- * Date: 2019-03-25
- * Time: 11:51
- */
+namespace Cirykpopeye\GoogleBusinessClient\Model;
 
-namespace Cirykpopeye\GoogleBusinessClient\Entity;
-
-
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Cirykpopeye\GoogleBusinessClient\Entity\Account;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="google_locations")
+ * Class Location
+ * @package Cirykpopeye\GoogleBusinessClient\Model
  * @ORM\MappedSuperclass()
  */
-class Location
+abstract class Location implements LocationInterface
 {
     /**
      * @ORM\Id

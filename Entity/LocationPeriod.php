@@ -25,7 +25,7 @@ class LocationPeriod
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cirykpopeye\GoogleBusinessClient\Entity\Location", inversedBy="periods")
+     * @ORM\ManyToOne(targetEntity="Cirykpopeye\GoogleBusinessClient\Model\LocationInterface", inversedBy="periods")
      */
     private $location;
 

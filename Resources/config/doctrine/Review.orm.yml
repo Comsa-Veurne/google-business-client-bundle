@@ -1,0 +1,23 @@
+Cirykpopeye\GoogleBusinessClient\Entity\Review:
+  type: mappedSuperclass
+  table: google_reviews
+  repositoryClass: Cirykpopeye\GoogleBusinessClient\Repository\ReviewRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    locale:
+      type: string
+    comment:
+      type: text
+    starRating:
+      type: string
+    createdOn:
+      type: datetime
+    reviewId:
+      type: string
+  manyToOne:
+    location:
+      targetEntity: Cirykpopeye\GoogleBusinessClient\Interfaces\LocationInterface

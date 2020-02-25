@@ -1,0 +1,20 @@
+Cirykpopeye\GoogleBusinessClient\Entity\LocationPeriod:
+  type: mappedSuperclass
+  table: google_location_period
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  manyToOne:
+    location:
+      targetEntity: Cirykpopeye\GoogleBusinessClient\Interfaces\LocationInterface
+  fields:
+    openDay:
+      type: string
+    openTime:
+      type: time
+    closeDay:
+      type: string
+    closeTime:
+      type: time

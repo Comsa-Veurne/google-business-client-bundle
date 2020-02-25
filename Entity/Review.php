@@ -8,68 +8,22 @@
 
 namespace Cirykpopeye\GoogleBusinessClient\Entity;
 
-use Cirykpopeye\GoogleBusinessClient\Model\LocationInterface;
+use Cirykpopeye\GoogleBusinessClient\Interfaces\LocationInterface;
+use Cirykpopeye\GoogleBusinessClient\Interfaces\ReviewInterface;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Class Review
- * @package Cirykpopeye\GoogleBusinessClient\Entity
- * @ORM\Entity(repositoryClass="Cirykpopeye\GoogleBusinessClient\Repository\ReviewRepository")
- * @ORM\Table(name="google_reviews")
- */
-class Review
+class Review implements ReviewInterface
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Cirykpopeye\GoogleBusinessClient\Model\LocationInterface", inversedBy="reviews")
-     */
-    private $location;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $locale;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $comment;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $reviewId;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $starRating;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $reviewer;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $profilePhoto;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdOn;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $updatedAt;
+    protected $id;
+    protected $location;
+    protected $locale;
+    protected $comment;
+    protected $reviewId;
+    protected $starRating;
+    protected $reviewer;
+    protected $profilePhoto;
+    protected $createdOn;
+    protected $updatedAt;
 
     /**
      * Review constructor.

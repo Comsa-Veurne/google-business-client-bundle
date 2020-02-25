@@ -9,3 +9,12 @@ services:
       - '@doctrine.orm.entity_manager'
       - '@request_stack'
 
+#  cirykpopeye.google_business_client.entity.location:
+#    class: Cirykpopeye\GoogleBusinessClient\Entity\Location
+#    type: entity
+#    table: google_locations
+#
+#  cirykpopeye.google_business_client.entity.review:
+#    class: Cirykpopeye\GoogleBusinessClient\Entity\Review
+#    type: entity
+#    table: google_reviews

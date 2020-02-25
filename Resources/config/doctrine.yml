@@ -1,0 +1,8 @@
+doctrine:
+  orm:
+    resolve_target_entities:
+      Cirykpopeye\GoogleBusinessClient\Interfaces\LocationInterface: Cirykpopeye\GoogleBusinessClient\Entity\Location
+      Cirykpopeye\GoogleBusinessClient\Interfaces\AccountInterface: Cirykpopeye\GoogleBusinessClient\Entity\Account
+      Cirykpopeye\GoogleBusinessClient\Interfaces\LocationPeriodInterface: Cirykpopeye\GoogleBusinessClient\Entity\LocationPeriod
+      Cirykpopeye\GoogleBusinessClient\Interfaces\ReviewInterface: Cirykpopeye\GoogleBusinessClient\Entity\Review
+

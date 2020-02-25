@@ -1,0 +1,14 @@
+Cirykpopeye\GoogleBusinessClient\Entity\Location:
+  type: mappedSuperclass
+  table: google_locations
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    locationId:
+      type: string
+  manyToOne:
+    account:
+      targetEntity: Cirykpopeye\GoogleBusinessClient\Interfaces\AccountInterface

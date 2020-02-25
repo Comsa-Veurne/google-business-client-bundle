@@ -2,11 +2,12 @@
 namespace Cirykpopeye\GoogleBusinessClient\Controller;
 
 
-use Cirykpopeye\GoogleBusinessClient\Entity\Location;
 use Cirykpopeye\GoogleBusinessClient\Entity\LocationPeriod;
 use Cirykpopeye\GoogleBusinessClient\Entity\Review;
+use Cirykpopeye\GoogleBusinessClient\Interfaces\LocationInterface;
+use Cirykpopeye\GoogleBusinessClient\Interfaces\LocationPeriodInterface;
+use Cirykpopeye\GoogleBusinessClient\Interfaces\ReviewInterface;
 use Cirykpopeye\GoogleBusinessClient\Manager\Connection;
-use Cirykpopeye\GoogleBusinessClient\Model\LocationInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
@@ -50,7 +51,7 @@ class ConnectionController extends Controller
             'nl'
         );
 
-        $wordList['fr'] = array ('c\'est', 'bien', 'atat', 'rapide', 'ultra rapide', 'lire', 'excellent', 'rien', 'ajouter', 'actif', 'station service', 'sympa', 'bon', 'qualité', 'personne', 'prix', 'propre', 'magasin', 'être', 'avoir', 'je', 'de', 'ne', 'pas', 'le', 'la', 'tu', 'vous', 'il', 'et', 'à', 'un', 'l\'', 'qui', 'aller', 'les', 'en', 'ça', 'faire', 'tout', 'on', 'que', 'ce', 'une', 'mes', 'bonjour', 'mes', 'des', 'se', 'pouvoir', 'vouloir', 'dire', 'mon', 'travail', 'revenir');
+        $wordList['fr'] = array ('c\'est', 'bien', 'atat', 'rapide', 'ultra rapide', 'lire', 'excellent', 'rien', 'ajouter', 'actif', 'station service', 'sympa', 'bon', 'qualité', 'personne', 'prix', 'propre', 'magasin', 'être', 'avoir', 'je', 'de', 'ne', 'pas', 'le', 'la', 'tu', 'vous', 'il', 'et', 'à', 'un', 'l\'', 'qui', 'aller', 'les', 'en', 'ça', 'faire', 'tout', 'on', 'que', 'ce', 'une', 'mes', 'bonjour', 'mes', 'des', 'se', 'pouvoir', 'vouloir', 'dire', 'mon', 'travail', 'revenir', 'choix', 'super', 'pratique');
         $wordList['en'] = array ('the', 'be', 'to', 'of', 'and', 'a', 'in',
             'that', 'have', 'I', 'it', 'for', 'not', 'on', 'with', 'he', 'good', 'staff',
             'as', 'you', 'do', 'at', 'fuel', 'always', 'stop', 'up', 'as', 'cheapest', 'super');
@@ -118,8 +119,8 @@ class ConnectionController extends Controller
                 $this->filterComment($review->comment);
                 $locale = $this->getTextLocale($review->comment, null);
 
-                /** @var Review $reviewEntity */
-                $reviewEntity = $this->em->getRepository(Review::class)->findOneBy([
+                /** @var ReviewInterface $reviewEntity */
+                $reviewEntity = $this->em->getRepository(ReviewInterface::class)->findOneBy([
                     'reviewId' => $review->reviewId
                 ]);
 
@@ -153,7 +154,7 @@ class ConnectionController extends Controller
 
             if ($periods) {
                 //-- Remove all existing periods
-                foreach ($this->em->getRepository(LocationPeriod::class)->findBy(['location' => $location]) as $locationPeriod) {
+                foreach ($this->em->getRepository(LocationPeriodInterface::class)->findBy(['location' => $location]) as $locationPeriod) {
                     $this->em->remove($locationPeriod);
                 }
                 $this->em->flush();

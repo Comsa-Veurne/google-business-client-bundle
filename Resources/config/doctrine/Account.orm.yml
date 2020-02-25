@@ -1,0 +1,8 @@
+Cirykpopeye\GoogleBusinessClient\Entity\Account:
+  type: mappedSuperclass
+  table: google_accounts
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO

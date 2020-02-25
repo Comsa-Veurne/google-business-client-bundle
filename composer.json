@@ -1,11 +1,12 @@
 {
-    "name": "cirykpopeye/google-business-client",
+    "name": "cirykpopeye/google-business-client-bundle",
     "authors": [
         {
             "name": "Ciryk Popeye",
             "email": "ciryk@hotmail.be"
         }
     ],
+    "license": "mit",
     "type": "symfony-bundle",
     "require": {
         "symfony/framework-bundle": ">=2.8.14",

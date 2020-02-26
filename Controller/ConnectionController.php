@@ -106,7 +106,13 @@ class ConnectionController extends Controller
 
         //-- It's translated by Google, fetch the original
         $originalStartsAt = strpos($comment, '(Original)') + strlen('(Original)');
-        $comment = substr($comment, $originalStartsAt);
+
+        if ($originalStartsAt === strlen('(Original)')) {
+            $comment = substr($comment, 0, strpos($comment, '(Translated by Google)'));
+        } else {
+            $comment = substr($comment, $originalStartsAt);
+        }
+        $comment = trim($comment);
     }
 
     public function callbackAction()

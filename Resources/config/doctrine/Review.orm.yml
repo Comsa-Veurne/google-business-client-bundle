@@ -18,6 +18,12 @@ Cirykpopeye\GoogleBusinessClient\Entity\Review:
       type: datetime
     reviewId:
       type: string
+    reviewer:
+      type: string
+    profilePhoto:
+      type: string
+    updatedAt:
+      type: datetime
   manyToOne:
     location:
       targetEntity: Cirykpopeye\GoogleBusinessClient\Interfaces\LocationInterface

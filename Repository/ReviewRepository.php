@@ -26,12 +26,10 @@ class ReviewRepository extends EntityRepository implements ReviewRepositoryInter
     public function findAllForLocale($locale, $limit = 30, $dynamic = false, $ratingFrom = 3)
     {
         $buildRatingSearchQuery = [];
-        for ($i = $ratingFrom; $i < count(static::RATINGS); $i++) {
+        for ($i = $ratingFrom; $i <= count(static::RATINGS); $i++) {
             $buildRatingSearchQuery[] = static::RATINGS[$i];
         }
 
-        dump($buildRatingSearchQuery);
-        die();
         $qb = $this->createQueryBuilder('i')
             ->where('i.locale = :locale OR i.comment IS NULL')
             ->andWhere('i.starRating IN (:ratings)')

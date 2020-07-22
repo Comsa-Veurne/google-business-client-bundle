@@ -15,14 +15,30 @@ use Doctrine\ORM\EntityRepository;
 
 class ReviewRepository extends EntityRepository implements ReviewRepositoryInterface
 {
-    public function findAllForLocale($locale, $limit = 30, $dynamic = false)
+    const RATINGS = [
+        1 => 'ONE',
+        2 => 'TWO',
+        3 => 'THREE',
+        4 => 'FOUR',
+        5 => 'FIVE'
+    ];
+
+    public function findAllForLocale($locale, $limit = 30, $dynamic = false, $ratingFrom = 3)
     {
+        $buildRatingSearchQuery = [];
+        for ($i = $ratingFrom; $i < count(static::RATINGS); $i++) {
+            $buildRatingSearchQuery[] = static::RATINGS[$i];
+        }
+
+        dump($buildRatingSearchQuery);
+        die();
         $qb = $this->createQueryBuilder('i')
             ->where('i.locale = :locale OR i.comment IS NULL')
-            ->andWhere('i.starRating = \'FOUR\' OR i.starRating = \'FIVE\'')
+            ->andWhere('i.starRating IN (:ratings)')
             ->andWhere('i.comment IS NOT NULL')
             ->andWhere('i.comment NOT LIKE :free')
             ->setParameter('locale', (string) $locale)
+            ->setParameter('ratings', $buildRatingSearchQuery)
             ->setParameter('free', (string) $locale === 'fr' ? '%gratuit%' : '%free%')
             ->orderBy('i.createdOn', 'DESC')
             ->setMaxResults($limit);

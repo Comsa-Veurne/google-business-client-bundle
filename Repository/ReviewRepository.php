@@ -50,9 +50,9 @@ class ReviewRepository extends EntityRepository implements ReviewRepositoryInter
         return $qb;
     }
 
-    public function findAllForLocationAndLocale(LocationInterface $location, $locale, $limit = 30)
+    public function findAllForLocationAndLocale(LocationInterface $location, $locale, $limit = 30, $ratingFrom = 3)
     {
-        $qb = $this->findAllForLocale($locale, $limit, true);
+        $qb = $this->findAllForLocale($locale, $limit, true, $ratingFrom);
         $qb->andWhere('i.location = :location')
             ->setParameter('location', $location);
         return $qb->getQuery()->getResult();

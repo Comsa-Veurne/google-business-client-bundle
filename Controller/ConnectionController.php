@@ -9,6 +9,7 @@ use Cirykpopeye\GoogleBusinessClient\Interfaces\LocationPeriodInterface;
 use Cirykpopeye\GoogleBusinessClient\Interfaces\ReviewInterface;
 use Cirykpopeye\GoogleBusinessClient\Manager\Connection;
 use Doctrine\ORM\EntityManagerInterface;
+use LanguageDetection\Language;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -44,69 +45,38 @@ class ConnectionController extends Controller
         if (empty($text)) {
             return null;
         }
-        $supported_languages = array(
-            'en',
-            'fr',
-            'de',
-            'nl'
-        );
 
-        $wordList['fr'] = array ('c\'est', 'bien', 'atat', 'rapide', 'ultra rapide', 'lire', 'excellent', 'rien', 'ajouter', 'actif', 'station service', 'sympa', 'bon', 'qualité', 'personne', 'prix', 'propre', 'magasin', 'être', 'avoir', 'je', 'de', 'ne', 'pas', 'le', 'la', 'tu', 'vous', 'il', 'et', 'à', 'un', 'l\'', 'qui', 'aller', 'les', 'en', 'ça', 'faire', 'tout', 'on', 'que', 'ce', 'une', 'mes', 'bonjour', 'mes', 'des', 'se', 'pouvoir', 'vouloir', 'dire', 'mon', 'travail', 'revenir', 'choix', 'super', 'pratique');
-        $wordList['en'] = array ('the', 'be', 'to', 'of', 'and', 'a', 'in',
-            'that', 'have', 'I', 'it', 'for', 'not', 'on', 'with', 'he', 'good', 'staff',
-            'as', 'you', 'do', 'at', 'fuel', 'always', 'stop', 'up', 'as', 'cheapest', 'super');
-        $wordList['de'] = ['das', 'ist', 'du', 'ich', 'nicht', 'die', 'es', 'und', 'Sie', 'der', 'was', 'wir', 'zu', 'ein', 'er', 'in', 'sie', 'mir', 'mit', 'ja', 'wie', 'den', 'auf', 'mich', 'dass', 'so', 'hier', 'eine', 'wenn', 'hat', 'all'];
-        $wordList['nl'] = ['Veel', 'Vriendelijk', 'keuze', 'Gek', 'Systeem', 'betalen', 'pinpas', 'goedkoop', 'tankstation', 'dicht', 'grens', 'druk', 'goedkoper', 'goedkoop', 'bij'];
+        $ld = new Language;
+        $l = $ld
+            ->detect($text)
+            ->bestResults()
+            ->close();
 
-        // clean out the input string - note we don't have any non-ASCII
-        // characters in the word lists... change this if it is not the
-        // case in your language wordlists!
-        $text = preg_replace("/[^A-Za-z]/", ' ', $text);
-        // count the occurrences of the most frequent words
-        foreach ($supported_languages as $language) {
-            $counter[$language]=0;
+        $l = array_keys($l);
+        if (empty($l)) {
+            return null;
         }
 
-        foreach ($supported_languages as $language) {
-            if (isset($wordList[$language])) {
-                foreach ($wordList[$language] as $word) {
-                    $counter[$language] = $counter[$language] +
-                        substr_count(' ' . strtoupper($text) . ' ', ' ' . strtoupper($word) . ' ');
-                }
-            }
-        }
-
-        // get max counter value
-        // from http://stackoverflow.com/a/1461363
-        $max = max($counter);
-        $maxs = array_keys($counter, $max);
-        // if there are two winners - fall back to default!
-        if (count($maxs) == 1) {
-            $winner = $maxs[0];
-            $second = 0;
-            // get runner-up (second place)
-            foreach ($supported_languages as $language) {
-                if ($language <> $winner) {
-                    if ($counter[$language]>$second) {
-                        $second = $counter[$language];
-                    }
-                }
-            }
-
-            return $winner;
-        } elseif (count($maxs) == 2) {
-            return 'eq';
-        }
-        return $default;
+        return $l[0];
     }
 
     private function filterComment(&$comment)
     {
-        if (strpos($comment, '(Translated by Google)') === false) return;
+        $translatedByGoogleStartsAt = strpos($comment, '(Translated by Google)');
+        if ($translatedByGoogleStartsAt === false) return;
 
         //-- It's translated by Google, fetch the original
-        $originalStartsAt = strpos($comment, '(Original)') + strlen('(Original)');
-        $comment = substr($comment, $originalStartsAt);
+        $originalStartsAt = strpos($comment, '(Original)');
+        if ($originalStartsAt !== false) {
+            $originalStartsAt += strlen('(Original)');
+        }
+
+        if ($originalStartsAt === false) {
+            //-- Take everything in front of translated by google
+            $comment = trim(substr($comment, 0, $translatedByGoogleStartsAt));
+        } else {
+            $comment = trim(substr($comment, $originalStartsAt));
+        }
     }
 
     public function callbackAction()

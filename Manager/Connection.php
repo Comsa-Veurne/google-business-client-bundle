@@ -1,12 +1,12 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: cirykpopeye
+ * User: Comsa
  * Date: 2019-03-25
  * Time: 13:34
  */
 
-namespace Cirykpopeye\GoogleBusinessClient\Manager;
+namespace Comsa\GoogleBusinessClient\Manager;
 
 use GuzzleHttp\Client;
 use Symfony\Component\HttpFoundation\JsonResponse;

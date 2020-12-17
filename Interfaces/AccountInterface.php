@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Cirykpopeye\GoogleBusinessClient\Interfaces;
+namespace Comsa\GoogleBusinessClient\Interfaces;
 
 
 interface AccountInterface

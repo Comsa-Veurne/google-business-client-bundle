@@ -6,7 +6,7 @@
  * Time: 08:43
  */
 
-namespace Cirykpopeye\GoogleBusinessClient;
+namespace Comsa\GoogleBusinessClient;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

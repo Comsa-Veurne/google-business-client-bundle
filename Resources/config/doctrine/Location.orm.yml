@@ -1,4 +1,4 @@
-Cirykpopeye\GoogleBusinessClient\Entity\Location:
+Comsa\GoogleBusinessClient\Entity\Location:
   type: mappedSuperclass
   table: google_locations
   id:
@@ -11,4 +11,4 @@ Cirykpopeye\GoogleBusinessClient\Entity\Location:
       type: string
   manyToOne:
     account:
-      targetEntity: Cirykpopeye\GoogleBusinessClient\Interfaces\AccountInterface
+      targetEntity: Comsa\GoogleBusinessClient\Interfaces\AccountInterface

@@ -1,15 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: cirykpopeye
+ * User: Comsa
  * Date: 2019-03-25
  * Time: 11:51
  */
 
-namespace Cirykpopeye\GoogleBusinessClient\Entity;
+namespace Comsa\GoogleBusinessClient\Entity;
 
 
-use Cirykpopeye\GoogleBusinessClient\Interfaces\LocationInterface;
+use Comsa\GoogleBusinessClient\Interfaces\LocationInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 

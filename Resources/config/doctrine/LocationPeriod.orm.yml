@@ -1,4 +1,4 @@
-Cirykpopeye\GoogleBusinessClient\Entity\LocationPeriod:
+Comsa\GoogleBusinessClient\Entity\LocationPeriod:
   type: mappedSuperclass
   table: google_location_period
   id:
@@ -8,7 +8,7 @@ Cirykpopeye\GoogleBusinessClient\Entity\LocationPeriod:
         strategy: AUTO
   manyToOne:
     location:
-      targetEntity: Cirykpopeye\GoogleBusinessClient\Interfaces\LocationInterface
+      targetEntity: Comsa\GoogleBusinessClient\Interfaces\LocationInterface
   fields:
     openDay:
       type: string

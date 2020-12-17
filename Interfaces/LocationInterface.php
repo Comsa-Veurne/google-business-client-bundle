@@ -1,12 +1,12 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: cirykpopeye
+ * User: Comsa
  * Date: 2019-04-16
  * Time: 15:55
  */
 
-namespace Cirykpopeye\GoogleBusinessClient\Interfaces;
+namespace Comsa\GoogleBusinessClient\Interfaces;
 
 
 interface LocationInterface

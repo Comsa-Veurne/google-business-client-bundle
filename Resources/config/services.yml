@@ -1,20 +1,10 @@
 services:
-  Cirykpopeye\GoogleBusinessClient\Manager\Connection:
-    class: Cirykpopeye\GoogleBusinessClient\Manager\Connection
+  Comsa\GoogleBusinessClient\Manager\Connection:
+    class: Comsa\GoogleBusinessClient\Manager\Connection
 
-  Cirykpopeye\GoogleBusinessClient\Controller\ConnectionController:
-    class: Cirykpopeye\GoogleBusinessClient\Controller\ConnectionController
+  Comsa\GoogleBusinessClient\Controller\ConnectionController:
+    class: Comsa\GoogleBusinessClient\Controller\ConnectionController
     arguments:
-      - '@Cirykpopeye\GoogleBusinessClient\Manager\Connection'
+      - '@Comsa\GoogleBusinessClient\Manager\Connection'
       - '@doctrine.orm.entity_manager'
       - '@request_stack'
-
-#  cirykpopeye.google_business_client.entity.location:
-#    class: Cirykpopeye\GoogleBusinessClient\Entity\Location
-#    type: entity
-#    table: google_locations
-#
-#  cirykpopeye.google_business_client.entity.review:
-#    class: Cirykpopeye\GoogleBusinessClient\Entity\Review
-#    type: entity
-#    table: google_reviews

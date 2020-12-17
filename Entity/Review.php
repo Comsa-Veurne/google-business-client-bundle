@@ -1,15 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: cirykpopeye
+ * User: Comsa
  * Date: 2019-03-25
  * Time: 10:59
  */
 
-namespace Cirykpopeye\GoogleBusinessClient\Entity;
+namespace Comsa\GoogleBusinessClient\Entity;
 
-use Cirykpopeye\GoogleBusinessClient\Interfaces\LocationInterface;
-use Cirykpopeye\GoogleBusinessClient\Interfaces\ReviewInterface;
+use Comsa\GoogleBusinessClient\Interfaces\LocationInterface;
+use Comsa\GoogleBusinessClient\Interfaces\ReviewInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 class Review implements ReviewInterface

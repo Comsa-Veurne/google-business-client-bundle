@@ -1,5 +1,5 @@
 {
-    "name": "cirykpopeye/google-business-client-bundle",
+    "name": "comsa/google-business-client-bundle",
     "authors": [
         {
             "name": "Ciryk Popeye",
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Cirykpopeye\\GoogleBusinessClient\\": "./"
+            "Comsa\\GoogleBusinessClient\\": "./"
         }
     }
 }

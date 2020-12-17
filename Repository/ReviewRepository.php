@@ -1,16 +1,16 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: cirykpopeye
+ * User: Comsa
  * Date: 2019-04-18
  * Time: 09:17
  */
 
-namespace Cirykpopeye\GoogleBusinessClient\Repository;
+namespace Comsa\GoogleBusinessClient\Repository;
 
 
-use Cirykpopeye\GoogleBusinessClient\Interfaces\LocationInterface;
-use Cirykpopeye\GoogleBusinessClient\Interfaces\ReviewRepositoryInterface;
+use Comsa\GoogleBusinessClient\Interfaces\LocationInterface;
+use Comsa\GoogleBusinessClient\Interfaces\ReviewRepositoryInterface;
 use Doctrine\ORM\EntityRepository;
 
 class ReviewRepository extends EntityRepository implements ReviewRepositoryInterface

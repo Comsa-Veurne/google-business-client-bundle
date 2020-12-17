@@ -1,5 +1,5 @@
 <?php
-namespace Cirykpopeye\GoogleBusinessClient\DependencyInjection;
+namespace Comsa\GoogleBusinessClient\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

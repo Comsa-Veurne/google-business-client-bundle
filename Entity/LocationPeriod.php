@@ -1,15 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: cirykpopeye
+ * User: Comsa
  * Date: 2019-10-14
  * Time: 13:57
  */
 
-namespace Cirykpopeye\GoogleBusinessClient\Entity;
+namespace Comsa\GoogleBusinessClient\Entity;
 
 
-use Cirykpopeye\GoogleBusinessClient\Interfaces\LocationPeriodInterface;
+use Comsa\GoogleBusinessClient\Interfaces\LocationPeriodInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 class LocationPeriod implements LocationPeriodInterface

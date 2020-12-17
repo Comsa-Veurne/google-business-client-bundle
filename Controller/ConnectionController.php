@@ -1,13 +1,13 @@
 <?php
-namespace Cirykpopeye\GoogleBusinessClient\Controller;
+namespace Comsa\GoogleBusinessClient\Controller;
 
 
-use Cirykpopeye\GoogleBusinessClient\Entity\LocationPeriod;
-use Cirykpopeye\GoogleBusinessClient\Entity\Review;
-use Cirykpopeye\GoogleBusinessClient\Interfaces\LocationInterface;
-use Cirykpopeye\GoogleBusinessClient\Interfaces\LocationPeriodInterface;
-use Cirykpopeye\GoogleBusinessClient\Interfaces\ReviewInterface;
-use Cirykpopeye\GoogleBusinessClient\Manager\Connection;
+use Comsa\GoogleBusinessClient\Entity\LocationPeriod;
+use Comsa\GoogleBusinessClient\Entity\Review;
+use Comsa\GoogleBusinessClient\Interfaces\LocationInterface;
+use Comsa\GoogleBusinessClient\Interfaces\LocationPeriodInterface;
+use Comsa\GoogleBusinessClient\Interfaces\ReviewInterface;
+use Comsa\GoogleBusinessClient\Manager\Connection;
 use Doctrine\ORM\EntityManagerInterface;
 use LanguageDetection\Language;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

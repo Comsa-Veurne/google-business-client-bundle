@@ -6,10 +6,10 @@
  * Time: 11:47
  */
 
-namespace Cirykpopeye\GoogleBusinessClient\Entity;
+namespace Comsa\GoogleBusinessClient\Entity;
 
 
-use Cirykpopeye\GoogleBusinessClient\Interfaces\AccountInterface;
+use Comsa\GoogleBusinessClient\Interfaces\AccountInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 

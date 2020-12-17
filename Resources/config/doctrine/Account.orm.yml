@@ -1,4 +1,4 @@
-Cirykpopeye\GoogleBusinessClient\Entity\Account:
+Comsa\GoogleBusinessClient\Entity\Account:
   type: mappedSuperclass
   table: google_accounts
   id:
